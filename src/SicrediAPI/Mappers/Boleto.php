@@ -179,13 +179,13 @@ class Boleto
             });
 
             foreach ($data['descontos'] as $discount) {
-                $discounts[] = new \SicrediAPI\Domain\Discount(
+                $discounts[] = new \SicrediAPI\Domain\Boleto\Discount(
                     $discount['valorDesconto'],
                     \DateTime::createFromFormat('Y-m-d', $discount['dataLimite'])
                 );
             }
 
-            $discountConfiguration = new \SicrediAPI\Domain\DiscountConfiguration(
+            $discountConfiguration = new \SicrediAPI\Domain\Boleto\DiscountConfiguration(
                 $discounts,
                 $data['tipoDesconto'] == 'VALOR' ? DiscountConfigurationDomain::TYPE_VALUE : DiscountConfigurationDomain::TYPE_PERCENTAGE,
                 $data['descontoAntecipacao'],
